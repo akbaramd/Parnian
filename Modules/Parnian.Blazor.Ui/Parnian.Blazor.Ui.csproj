@@ -16,7 +16,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Bases\"/>
+      <Content Update="Components\Modals\ParModal.razor.css">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </Content>
     </ItemGroup>
 
 </Project>

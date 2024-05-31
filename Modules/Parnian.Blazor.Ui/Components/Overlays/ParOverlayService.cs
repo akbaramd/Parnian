@@ -1,42 +1,34 @@
 namespace Parnian.Blazor.Ui.Components.Overlays;
-
 public class ParOverlayService
 {
-  private readonly List<ParOverlay> _overlays = [];
+    private readonly List<ParOverlay> _overlays = new();
 
-  public List<ParOverlay> GetOverlays()
-  {
-    return _overlays;
-  }
+    public event EventHandler<ParOverlay> Added;
+    public event EventHandler<ParOverlay> Removed;
+    public event EventHandler<ParOverlay> Changed;
 
-  public void AddOverlay(ParOverlay overlay)
-  {
-    try
+    public void AddOverlay(ParOverlay overlay)
     {
-      _overlays.Add(overlay);
-      Added.Invoke(this, overlay);
+        if (!_overlays.Contains(overlay))
+        {
+            _overlays.Add(overlay);
+            Added?.Invoke(this, overlay);
+        }
     }
-    catch (Exception ex)
+    
+    public void NotifyChanged(ParOverlay overlay)
     {
-      // ignored
-      Console.WriteLine(ex.Message);
+        Added?.Invoke(this, overlay);
     }
-  }
 
-  public event EventHandler<ParOverlay> Added = default!;
-  public event EventHandler<ParOverlay> Removed = default!;
+    public void RemoveOverlay(ParOverlay overlay)
+    {
+        if (_overlays.Contains(overlay))
+        {
+            _overlays.Remove(overlay);
+            Removed?.Invoke(this, overlay);
+        }
+    }
 
-  public void RemoveOverlay(ParOverlay overlay)
-  {
-    try
-    {
-      _overlays.Remove(overlay);
-      Removed.Invoke(this, overlay);
-    }
-    catch (Exception ex)
-    {
-      // ignored
-      Console.WriteLine(ex.Message);
-    }
-  }
+    public IEnumerable<ParOverlay> GetOverlays() => _overlays;
 }

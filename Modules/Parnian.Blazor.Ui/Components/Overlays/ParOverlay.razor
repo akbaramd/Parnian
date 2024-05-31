@@ -2,57 +2,29 @@
 @code {
 
     [Inject] public ParOverlayService OverlayService { get; set; } = default!;
-    
-    [Parameter]
-    public bool Show { get; set; }
-   
-
-    [Parameter] public EventCallback<bool> ShowChanged { get; set; }
 
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
-    [Parameter] public ParBackdropMode BackdropMode { get; set; } = ParBackdropMode.Default;
-    [Parameter] public string BackdropClass { get; set; } = string.Empty;
-    [Parameter] public string ContentClass { get; set; } = string.Empty;
+        
     [Parameter] public string Id { get; set; } = Guid.NewGuid().ToString("N");
 
-    protected override void OnParametersSet()
-    {
-        if (Show)
-        {
-            OverlayService.AddOverlay(this);
-        }
-        else
-        {
-            OverlayService.RemoveOverlay(this);
-        }
-        base.OnParametersSet();
-    }
-
+    
 
     protected override void OnInitialized()
     {
-        OverlayService.Removed += OverlayServiceOnRemoved;
-       
+        OverlayService.AddOverlay(this);
         base.OnInitialized();
     }
 
-
-
-    private void OverlayServiceOnRemoved(object? sender, ParOverlay e)
+    protected override void OnAfterRender(bool firstRender)
     {
-        InvokeAsync(() =>
-        {
-            Show = false;
-            _=ShowChanged.InvokeAsync(Show);
-            StateHasChanged();
-        });
+        OverlayService.NotifyChanged(this);
+        base.OnAfterRender(firstRender);
     }
 
 
     public void Dispose()
     {
         OverlayService.RemoveOverlay(this);
-        OverlayService.Removed -= OverlayServiceOnRemoved;
     }
 
 }

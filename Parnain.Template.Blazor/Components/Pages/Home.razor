@@ -1,19 +1,25 @@
 ﻿@page "/"
+@inject ParOverlayService OverlayService
 @rendermode InteractiveServer
 <PageTitle>Home</PageTitle>
 
-<h1 @onclick="()=>_isOpen = !_isOpen">Hello, world!</h1>
+<h1 @onclick="ToggleModal">Hello, world!</h1>
 
-<ParOverlay  Show="_isOpen">
-    <h2>sss</h2>
-</ParOverlay>
+<ParModal @bind-Show="_isOpen">
+    <h2>Modal Content Here</h2>
+</ParModal>
 
 Welcome to your new app.
 
-@code
-{
+@code {
     private bool _isOpen = true;
-    
+
+    private void ToggleModal()
+    {
+        _isOpen = !_isOpen;
+    }
+
+
     protected override void OnInitialized()
     {
         base.OnInitialized();
