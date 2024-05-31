@@ -1,0 +1,26 @@
+﻿@page "/"
+@rendermode InteractiveServer
+<PageTitle>Home</PageTitle>
+
+<h1 @onclick="()=>_isOpen = !_isOpen">Hello, world!</h1>
+
+<ParOverlay  Show="_isOpen">
+    <h2>sss</h2>
+</ParOverlay>
+
+Welcome to your new app.
+
+@code
+{
+    private bool _isOpen = true;
+    
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+    }
+}

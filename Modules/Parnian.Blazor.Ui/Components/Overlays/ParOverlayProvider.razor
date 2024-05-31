@@ -1,0 +1,51 @@
+@implements IDisposable
+<div class="par-overlays">
+
+    @foreach (var overlay in OverlayService.GetOverlays())
+    {
+        <div class="par-overlay ">
+            <div class="par-overlay-content @overlay.ContentClass" id="@overlay.Id">
+                @overlay.ChildContent
+            </div>
+            @if (overlay.BackdropMode != ParBackdropMode.None)
+            {
+                <div @onclick="()=>OnBackdropClick(overlay)" class="par-overlay-backdrop @overlay.BackdropClass"></div>
+            }
+        </div>
+    }
+</div>
+
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+    [Inject] public ParOverlayService OverlayService { get; set; } = default!;
+
+    protected override void OnInitialized()
+    {
+        OverlayService.Added += OverlayServiceOnAdded;
+        OverlayService.Removed += OverlayServiceOnRemoved;;
+        base.OnInitialized();
+    }
+
+    private void OverlayServiceOnRemoved(object? sender, ParOverlay e)
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OverlayServiceOnAdded(object? sender, ParOverlay e)
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnBackdropClick(ParOverlay overlay)
+    {
+        OverlayService.RemoveOverlay(overlay);
+    }
+
+    public void Dispose()
+    {
+        OverlayService.Added -= OverlayServiceOnAdded;
+        OverlayService.Removed -= OverlayServiceOnRemoved;;
+    }
+
+}
