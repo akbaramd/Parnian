@@ -1,7 +1,8 @@
 @implements IDisposable
+@implements IAsyncDisposable
 @code {
 
-    [Inject] public ParOverlayService OverlayService { get; set; } = default!;
+    [Inject] public IParOverlayService OverlayService { get; set; } = default!;
 
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
         
@@ -25,6 +26,12 @@
     public void Dispose()
     {
         OverlayService.RemoveOverlay(this);
+    }
+
+    public ValueTask DisposeAsync()
+    {
+        OverlayService.RemoveOverlay(this);
+        return ValueTask.CompletedTask;
     }
 
 }

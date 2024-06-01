@@ -1,0 +1,60 @@
+<!-- ParOverlay.razor -->
+<ParOverlay Show="@_overlayShow" Id="@Id" >
+    @if (BackdropMode != ParBackdropMode.None)
+    {
+        <div @onclick="OnBackdropClick" class="par-offcanvas-backdrop @(Show ? "show" : "hide")"></div>
+    }
+
+    <div class="par-offcanvas-content @(Show ? "end show" : "end hide")" @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)">
+        @ChildContent
+    </div>
+</ParOverlay>
+
+@code {
+    [Parameter]
+    public bool Show { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> ShowChanged { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = default!;
+
+    [Parameter]
+    public ParBackdropMode BackdropMode { get; set; } = ParBackdropMode.Default;
+
+    [Parameter]
+    public string Id { get; set; } = Guid.NewGuid().ToString("N");
+
+    private bool _overlayShow;
+
+    protected override void OnParametersSet()
+    {
+        if (Show)
+        {
+            _overlayShow = Show;
+        }
+        base.OnParametersSet();
+    }
+
+    private async Task OnBackdropClick()
+    {
+        if (BackdropMode == ParBackdropMode.Static)
+        {
+            return;
+        }
+
+        Show = false;
+        await ShowChanged.InvokeAsync(Show);
+        await InvokeAsync(StateHasChanged); // Trigger a re-render to start the animation
+    }
+
+    private void OnAnimationEnd()
+    {
+        if (!Show)
+        {
+            _overlayShow = Show;
+        }
+        StateHasChanged();
+    }
+}

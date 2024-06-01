@@ -1,24 +1,34 @@
 ﻿@page "/"
-@inject ParOverlayService OverlayService
 @rendermode InteractiveServer
 <PageTitle>Home</PageTitle>
 
 <h1 @onclick="ToggleModal">Hello, world!</h1>
 
-<ParModal @bind-Show="_isOpen">
-    <h2>Modal Content Here</h2>
+<button class="btn btn-primary" @onclick="ToggleModal">Modal</button>
+
+<ParModal @bind-Show="_isOpenModal">
+  <button class="btn btn-secondary" @onclick="ToggleOffCanvas">OffCanvas</button>
 </ParModal>
+
+<ParOffCanvas @bind-Show="_isOpenCanvass">
+   <button class="btn btn-primary" @onclick="ToggleModal">Modal</button>
+</ParOffCanvas>
 
 Welcome to your new app.
 
 @code {
-    private bool _isOpen = true;
+    private bool _isOpenModal = false;
+    private bool _isOpenCanvass = false;
 
     public void ToggleModal()
     {
-        _isOpen = !_isOpen;
+        _isOpenModal = !_isOpenModal;
     }
-
+   
+    public void ToggleOffCanvas()
+    {
+        _isOpenCanvass = !_isOpenCanvass;
+    }
 
     protected override void OnInitialized()
     {

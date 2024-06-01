@@ -1,0 +1,108 @@
+@keyframes enter {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes exit {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.par-offcanvas-backdrop.show {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.par-offcanvas-backdrop.hide {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+.par-offcanvas-backdrop {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+}
+
+.par-offcanvas-content.start.show {
+    animation: enter 0.3s ease-in-out forwards, enter 0.3s ease-in-out forwards;
+}
+
+.par-offcanvas-content.start.hide {
+    animation: exit 0.3s ease-in-out forwards, exit 0.3s ease-in-out forwards;
+}
+
+.par-offcanvas-content.end.show {
+    animation: enter 0.3s ease-in-out forwards, enter 0.3s ease-in-out forwards;
+}
+
+.par-offcanvas-content.end.hide {
+    animation: exit 0.3s ease-in-out forwards, exit 0.3s ease-in-out forwards;
+}
+
+.par-offcanvas-content {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 24rem;
+    max-width: 100%;
+    background-color: white;
+    display: flex;
+    z-index: 101;
+    padding: 1rem;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* LTR positioning */
+.par-offcanvas-content.end {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+}
+
+.par-offcanvas-content.start {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+/* RTL positioning */
+:dir(rtl) .par-offcanvas-content.end {
+    left: 0;
+    right: auto;
+    transform: translateX(-100%);
+}
+
+:dir(rtl) .par-offcanvas-content.start {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+}

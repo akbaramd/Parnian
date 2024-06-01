@@ -1,11 +1,11 @@
 <!-- ParOverlay.razor -->
-<ParOverlay Show="@_overlayShow" Id="@Id" OnBackdropClick="OnBackdropClick">
+<ParOverlay Show="@_overlayShow" Id="@Id" >
     @if (BackdropMode != ParBackdropMode.None)
     {
         <div @onclick="OnBackdropClick" class="par-modal-backdrop @(Show ? "show" : "hide")"></div>
     }
 
-    <div class="par-modal-content @(Show ? "show" : "hide")" @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)">
+    <div class="par-modal-content @(Show ? "show " : "hide")" @onanimationend="EventUtil.AsNonRenderingEventHandler(OnAnimationEnd)">
         @ChildContent
     </div>
 </ParOverlay>
@@ -28,13 +28,7 @@
 
     private bool _overlayShow;
 
-    protected override void OnAfterRender(bool firstRender)
-    {
-        Console.WriteLine(Id);
-        Console.WriteLine(Show);
-        base.OnAfterRender(firstRender);
-    }
-
+    
     protected override void OnParametersSet()
     {
         if (Show)

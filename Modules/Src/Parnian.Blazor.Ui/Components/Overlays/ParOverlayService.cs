@@ -1,6 +1,6 @@
 namespace Parnian.Blazor.Ui.Components.Overlays;
 
-public class ParOverlayService
+public class ParOverlayService : IParOverlayService
 {
   private readonly List<ParOverlay> _overlays = new();
 

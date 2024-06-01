@@ -1,0 +1,65 @@
+@keyframes enter {
+    0% {
+        opacity: 1;
+        scale: 0.95;
+        transform:translate3d(-50%,-48%,0)
+    }
+}
+@keyframes exit {
+    to {
+        opacity: 0;
+        scale: 0.95;
+        transform:translate3d(-50%,-48%,0)
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+.par-modal-backdrop.show {
+    animation: fadeIn 0.15s ease-in-out forwards;
+}
+
+.par-modal-backdrop.hide {
+    animation: fadeOut 0.15s ease-in-out forwards;
+}
+
+.par-modal-backdrop {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+}
+
+.par-modal-content.show {
+    animation: enter 0.15s ease-in-out forwards
+}
+
+.par-modal-content.hide {
+    animation: exit 0.15s ease-in-out forwards
+}
+
+.par-modal-content {
+    position: fixed;
+    max-width: 32rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.25rem;
+    display: flex;
+    top: 50%;
+    inset-inline-start: 50%;
+    z-index: 100;
+    padding: 1rem;
+    transform: translate(-50%,-50%);
+}

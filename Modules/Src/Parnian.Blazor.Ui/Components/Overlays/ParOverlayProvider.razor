@@ -2,23 +2,27 @@
 <div class="par-overlays">
     @foreach (var overlay in OverlayService.GetOverlays())
     {
-       
-           <div class="par-overlay @(overlay.Show?"show":"")">
+
+        if (overlay.Show)
+        {
+            <div @key="overlay.Id" class="par-overlay @(overlay.Show?"show":"")">
                @overlay.ChildContent
            </div>
+        }
       
     }
 </div>
 
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
-    [Inject] public ParOverlayService OverlayService { get; set; } = default!;
+    [Inject] public IParOverlayService OverlayService { get; set; } = default!;
 
     protected override void OnInitialized()
     {
         OverlayService.Added += OverlayServiceOnAdded;
         OverlayService.Removed += OverlayServiceOnRemoved;
-        OverlayService.Changed += OverlayServiceOnChanged;;
+        OverlayService.Changed += OverlayServiceOnChanged;
+        
         base.OnInitialized();
     }
 

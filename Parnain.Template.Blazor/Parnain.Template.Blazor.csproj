@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Modules\Parnian.Blazor.Ui\Parnian.Blazor.Ui.csproj"/>
+        <ProjectReference Include="..\Modules\Src\Parnian.Blazor.Ui\Parnian.Blazor.Ui.csproj"/>
     </ItemGroup>
 
 </Project>
