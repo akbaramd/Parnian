@@ -6,8 +6,8 @@
     [Parameter] public RenderFragment ChildContent { get; set; } = default!;
         
     [Parameter] public string Id { get; set; } = Guid.NewGuid().ToString("N");
-
     
+    [Parameter] public bool Show { get; set; } 
 
     protected override void OnInitialized()
     {

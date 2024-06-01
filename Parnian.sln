@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parnian.Blazor.Ui", "Module
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parnain.Template.Blazor", "Parnain.Template.Blazor\Parnain.Template.Blazor.csproj", "{E7021391-9BE3-45B2-9106-45B0F4D75F09}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{983F6337-7918-40A1-84D3-D1A6AB7CD504}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parnian.Blazor.Ui.Test", "Modules\Tests\Parnian.Blazor.Ui.Test\Parnian.Blazor.Ui.Test.csproj", "{BEC7BCCD-9695-4C24-AFCD-352342BF6C14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +20,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EBB9B2FA-B7EC-436C-AAA1-139138FDAA66} = {F5B12678-E67A-4BEE-9DB4-BD40AED2FF05}
 		{E7021391-9BE3-45B2-9106-45B0F4D75F09} = {C84C0F0B-2863-42D1-927C-D500BBDE2FC2}
+		{983F6337-7918-40A1-84D3-D1A6AB7CD504} = {F5B12678-E67A-4BEE-9DB4-BD40AED2FF05}
+		{BEC7BCCD-9695-4C24-AFCD-352342BF6C14} = {983F6337-7918-40A1-84D3-D1A6AB7CD504}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EBB9B2FA-B7EC-436C-AAA1-139138FDAA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,5 +32,9 @@ Global
 		{E7021391-9BE3-45B2-9106-45B0F4D75F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7021391-9BE3-45B2-9106-45B0F4D75F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7021391-9BE3-45B2-9106-45B0F4D75F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC7BCCD-9695-4C24-AFCD-352342BF6C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC7BCCD-9695-4C24-AFCD-352342BF6C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC7BCCD-9695-4C24-AFCD-352342BF6C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC7BCCD-9695-4C24-AFCD-352342BF6C14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

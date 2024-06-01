@@ -2,9 +2,11 @@
 <div class="par-overlays">
     @foreach (var overlay in OverlayService.GetOverlays())
     {
-        <div class="par-overlay">
-            @overlay.ChildContent
-        </div>
+       
+           <div class="par-overlay @(overlay.Show?"show":"")">
+               @overlay.ChildContent
+           </div>
+      
     }
 </div>
 

@@ -1,5 +1,11 @@
 ﻿.par-overlay {
     position: relative;
+    display: none;
+}
+
+.par-overlay.show {
+    position: relative;
+    display: block;
 }
 
 
