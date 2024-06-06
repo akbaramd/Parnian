@@ -1,0 +1,24 @@
+
+@code {
+    [Parameter]
+    public string Id { get; set; } = $"component-{Guid.NewGuid()}";
+
+    [Parameter] public string Class { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Style { get; set; }= string.Empty;
+
+    protected virtual string BuildClass()
+    {
+        return Class+ " ";
+    }
+
+    protected virtual IDictionary<string, object> AdditionalAttributes =>
+        new Dictionary<string, object>
+        {
+            { "id", Id },
+            { "class", BuildClass() },
+            { "style", Style }
+        };
+
+}

@@ -1,5 +1,5 @@
 ﻿@page "/"
-@rendermode InteractiveServer
+@rendermode InteractiveAuto
 <PageTitle>Home</PageTitle>
 
 <h1 @onclick="ToggleModal">Hello, world!</h1>
@@ -13,12 +13,12 @@
 <ParOffCanvas @bind-Show="_isOpenCanvass">
    <button class="btn btn-primary" @onclick="ToggleModal">Modal</button>
 </ParOffCanvas>
-
+<ParButton Class="x" Style="border-bottom-width: 100px;" Id="blazor-error-ui"/>
 Welcome to your new app.
 
 @code {
-    private bool _isOpenModal = false;
-    private bool _isOpenCanvass = false;
+    private bool _isOpenModal = true;
+    private bool _isOpenCanvass = true;
 
     public void ToggleModal()
     {

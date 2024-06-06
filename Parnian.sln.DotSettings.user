@@ -1,9 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=70bcdea8_002D1a92_002D41ff_002Dbd92_002Dc0b851cb6927/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from ParModalTests.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
-    &lt;ProjectFile&gt;BEC7BCCD-9695-4C24-AFCD-352342BF6C14/f:ParModalTests.cs&lt;/ProjectFile&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;xUnit::BEC7BCCD-9695-4C24-AFCD-352342BF6C14::net8.0::Parnian.Blazor.Ui.Test.ParOverlayTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::E4A3B681-CA85-4C0D-8C40-7CE2B6856834::net8.0::MorseEncryptorTests&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
+    &lt;ProjectFile&gt;E4A3B681-CA85-4C0D-8C40-7CE2B6856834/f:StringExtensionsTests.cs&lt;/ProjectFile&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

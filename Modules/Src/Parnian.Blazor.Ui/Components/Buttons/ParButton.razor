@@ -1,0 +1,11 @@
+@inherits BaseComponent
+<button @attributes="AdditionalAttributes">PaButton</button>
+
+@code {
+    protected override string BuildClass()
+    {
+        
+        return base.BuildClass() + "btn btn-primary";
+    }
+
+}
